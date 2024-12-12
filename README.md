@@ -10,7 +10,7 @@ This is my personal attempt to write a cool style guide for [Solidity](https://s
 
 Using named imports is cleaner and helps quickly figuring out where imports come from.
 
-```solidity=
+```solidity
 // This is bad
 import "Foo.sol";
 
