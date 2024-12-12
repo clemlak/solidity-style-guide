@@ -17,3 +17,11 @@ import "Foo.sol";
 // This is good
 import { IFoo } from "Fool.sol";
 ```
+
+### Highlight module imports using a special character
+
+Module imports can be highlighted using a special character, this makes it easier to distinguish them from other imports.
+
+```solidity
+import { IFoo } from "@foo/IFool.sol";
+```
