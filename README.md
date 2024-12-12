@@ -37,3 +37,15 @@ import { IFoo } from "../../interfaces/IFoo.sol";
 // This is good
 import { IFoo } from "src/interfaces/IFoo.sol";
 ```
+
+### Order imports
+
+Imports should be ordered in the following way:
+
+1. Modules or libraries (external packages)
+2. Local files
+
+```solidity
+import { IFoo } from "@foo/IFoo.sol";
+import { IBar } from "src/interfaces/IBar.sol";
+```
