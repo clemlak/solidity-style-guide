@@ -25,3 +25,15 @@ Module imports can be highlighted using a special character, this makes it easie
 ```solidity
 import { IFoo } from "@foo/IFool.sol";
 ```
+
+### Use absolute paths for imports
+
+Relative paths require some brain power to figure out where the file is located, using absolute paths is cleaner and easier to understand.
+
+```solidity
+// This is bad
+import { IFoo } from "../../interfaces/IFoo.sol";
+
+// This is good
+import { IFoo } from "src/interfaces/IFoo.sol";
+```
