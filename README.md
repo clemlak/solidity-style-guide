@@ -49,3 +49,17 @@ Imports should be ordered in the following way:
 import { IFoo } from "@foo/IFoo.sol";
 import { IBar } from "src/interfaces/IBar.sol";
 ```
+
+## Errors
+
+### Use explicit error names
+
+Error names should be clear enough to explain what went wrong.
+
+```solidity
+// This is bad
+error WrongAddress();
+
+// This is good
+error OnlyOwner();
+```
