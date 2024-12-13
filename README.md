@@ -75,3 +75,21 @@ error WrongAddress();
 // This is good
 error OnlyOwner();
 ```
+
+### Use error parameters to provide details
+
+Errors might be reused multiple times in the same function, using parameters will help understand what went wrong.
+
+```solidity
+// Let's say we have users with different roles
+enum UserRole { None, Sender, Recipient }
+
+// And we revert if the user has the wrong role
+error WrongUserRole(address user, UserRole expected, UserRole actual);
+
+// This function reuses the same error twice, providing details helps understand where the error comes from
+function transfer(address from, address to) public {
+  require(getRole[from] == UserRole.Sender, WrongUserRole(from, UserRole.Sender, getRole[from]));
+  require(getRole[to] == UserRole.Recipient, WrongUserRole(to, UserRole.Recipient, getRole[to]));
+}
+```
