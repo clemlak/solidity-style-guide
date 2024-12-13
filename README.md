@@ -52,6 +52,18 @@ import { IBar } from "src/interfaces/IBar.sol";
 
 ## Errors
 
+### Use custom revert errors with require
+
+`require` now accepts custom revert errors, this is a great improvement as strings are expensive to store onchain.
+
+```solidity
+// This is bad
+require(msg.sender == owner, "Only owner can call this function");
+
+// This is good
+require(msg.sender == owner, OnlyOwner());
+```
+
 ### Use explicit error names
 
 Error names should be clear enough to explain what went wrong.
