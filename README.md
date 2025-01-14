@@ -4,6 +4,64 @@
 
 This is my personal attempt to write a cool style guide for [Solidity](https://soliditylang.org/), all the recommendations that you will read in this guide are purely personal and opinionated, have fun reading!
 
+## Definitions
+
+### Prefer "free definitions" when possible
+
+Variables, functions and events can be defined outside of a `contract` or a `library`, this makes them easily accessible and reusable in other places.
+
+### Follow naming conventions
+
+Naming conventions for variables where defined to quickly understand what they are used for.
+
+```solidity
+// Constants should be in uppercase
+uint256 constant MAX_SUPPLY = 1e25;
+
+// Variables should be in camelCase
+uint256 totalSupply = 1e24;
+
+// Functions should be in camelCase
+function totalSupply() public view returns (uint256) {
+  return totalSupply;
+}
+
+// Events should be in PascalCase
+event Transfer(address indexed from, address indexed to, uint256 value);
+
+// Structs should be in PascalCase
+struct Token {
+  uint256 totalSupply;
+}
+
+// Enums should be in PascalCase
+enum UserRole { None, Sender, Recipient }
+
+// Modifiers should be in camelCase
+modifier onlyOwner() {
+  // ...
+  _;
+}
+
+// Errors should be in PascalCase
+error OnlyOwner();
+
+// Interfaces should be in PascalCase
+interface IRouter {
+  // ...
+}
+
+// Libraries should be in PascalCase
+library MathLibrary {
+  // ...
+}
+
+// Contracts should be in PascalCase
+contract Token {
+  // ...
+}
+```
+
 ## Imports
 
 ### Always use named imports
@@ -92,4 +150,19 @@ function transfer(address from, address to) public {
   require(getRole[from] == UserRole.Sender, WrongUserRole(from, UserRole.Sender, getRole[from]));
   require(getRole[to] == UserRole.Recipient, WrongUserRole(to, UserRole.Recipient, getRole[to]));
 }
+```
+
+## Comments
+
+### Use NatSpec
+
+Use `///` for single line comments, and `/** ... */` for multi-line comments.
+
+```solidity
+/// @notice This is a single line comment
+
+/**
+ * @notice This is a multi-line comment, you can write
+ * as much as you want here.
+ */
 ```
